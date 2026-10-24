@@ -1,0 +1,10 @@
+<%!
+    /** Escapa caracteres especiales de HTML para evitar ataques XSS al mostrar datos del usuario. */
+    private static String esc(String texto) {
+        if (texto == null) {
+            return "";
+        }
+        return texto.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+                    .replace("\"", "&quot;").replace("'", "&#39;");
+    }
+%>

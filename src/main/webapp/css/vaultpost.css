@@ -1,0 +1,35 @@
+/* Estilos del módulo de clientes (misma paleta de Vaultpost) */
+:root { --negro: #18181b; --fondo: #fafafa; --borde: #e4e4e7; --suave: #71717a; --rojo: #dc2626; --verde: #047857; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; font-size: 14px; color: var(--negro); background: var(--fondo); }
+.barra { display: flex; align-items: center; gap: 10px; height: 60px; padding: 0 24px; background: #fff; border-bottom: 1px solid var(--borde); }
+.logo { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; color: #fff; font-size: 12px; font-weight: bold; background: var(--negro); }
+.contenido { max-width: 960px; margin: 0 auto; padding: 24px; }
+.estrecho { max-width: 520px; }
+.titulo { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+h1 { margin: 0 0 4px; font-size: 24px; }
+.suave { color: var(--suave); }
+.tarjeta { margin: 16px 0; overflow-x: auto; border: 1px solid var(--borde); border-radius: 8px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+table { width: 100%; border-collapse: collapse; }
+th { padding: 12px 16px; text-align: left; font-weight: normal; color: var(--suave); }
+td { padding: 12px 16px; border-top: 1px solid var(--borde); }
+.derecha { text-align: right; }
+.acciones { display: flex; justify-content: flex-end; gap: 12px; align-items: center; }
+.acciones form { margin: 0; }
+.vacio { text-align: center; color: var(--suave); padding: 32px; }
+.boton { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border: 0; border-radius: 6px; color: #fff; font-size: 14px; text-decoration: none; cursor: pointer; background: var(--negro); }
+.boton.secundario { color: var(--negro); background: #fff; border: 1px solid var(--borde); }
+.enlace { padding: 0; border: 0; font-size: 14px; cursor: pointer; background: none; }
+.peligro { color: var(--rojo); }
+a { color: var(--negro); }
+.buscador { display: flex; gap: 8px; margin-top: 20px; }
+input { width: 100%; height: 40px; padding: 0 12px; border: 1px solid var(--borde); border-radius: 6px; font-size: 14px; }
+.buscador input { max-width: 320px; }
+.formulario { padding: 24px; }
+.formulario label { display: block; margin: 16px 0 6px; font-weight: bold; }
+.botones { display: flex; justify-content: flex-end; gap: 8px; margin-top: 24px; }
+.aviso { padding: 10px 12px; border-radius: 6px; }
+.exito { color: var(--verde); background: #ecfdf5; }
+.error { color: var(--rojo); background: #fef2f2; }
+.volver { display: inline-block; margin-bottom: 8px; color: var(--suave); text-decoration: none; }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
