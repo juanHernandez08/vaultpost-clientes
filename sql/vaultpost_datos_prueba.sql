@@ -1,0 +1,40 @@
+-- Vaultpost - Datos de prueba (ejecutar después de vaultpost_mysql.sql)
+SET NAMES utf8mb4;
+USE vaultpost;
+
+INSERT INTO companies (id, name, plan) VALUES
+  ('c0000000-0000-0000-0000-000000000001', 'Orbital Media', 'agency');
+
+INSERT INTO users (id, company_id, email, full_name, role, can_publish, can_schedule, can_view_analytics, can_manage_accounts) VALUES
+  ('u0000000-0000-0000-0000-000000000001', 'c0000000-0000-0000-0000-000000000001', 'laura@orbitalmedia.co',  'Laura Méndez',  'admin',  TRUE,  TRUE, TRUE,  TRUE),
+  ('u0000000-0000-0000-0000-000000000002', 'c0000000-0000-0000-0000-000000000001', 'andres@orbitalmedia.co', 'Andrés Rojas',  'custom', FALSE, TRUE, TRUE,  FALSE),
+  ('u0000000-0000-0000-0000-000000000003', 'c0000000-0000-0000-0000-000000000001', 'sofia@orbitalmedia.co',  'Sofía Cárdenas','custom', TRUE,  TRUE, FALSE, FALSE);
+
+UPDATE companies SET owner_id = 'u0000000-0000-0000-0000-000000000001'
+ WHERE id = 'c0000000-0000-0000-0000-000000000001';
+
+INSERT INTO clients (id, company_id, name) VALUES
+  ('k0000000-0000-0000-0000-000000000001', 'c0000000-0000-0000-0000-000000000001', 'Café Andino'),
+  ('k0000000-0000-0000-0000-000000000002', 'c0000000-0000-0000-0000-000000000001', 'Clínica Sonríe'),
+  ('k0000000-0000-0000-0000-000000000003', 'c0000000-0000-0000-0000-000000000001', 'Moda Raíz');
+
+INSERT INTO user_clients (user_id, client_id) VALUES
+  ('u0000000-0000-0000-0000-000000000002', 'k0000000-0000-0000-0000-000000000001'),
+  ('u0000000-0000-0000-0000-000000000002', 'k0000000-0000-0000-0000-000000000002'),
+  ('u0000000-0000-0000-0000-000000000003', 'k0000000-0000-0000-0000-000000000003');
+
+INSERT INTO social_accounts (id, client_id, platform, username, added_by_id) VALUES
+  ('s0000000-0000-0000-0000-000000000001', 'k0000000-0000-0000-0000-000000000001', 'instagram', 'cafeandino',    'u0000000-0000-0000-0000-000000000001'),
+  ('s0000000-0000-0000-0000-000000000002', 'k0000000-0000-0000-0000-000000000001', 'facebook',  'CafeAndinoCol', 'u0000000-0000-0000-0000-000000000001'),
+  ('s0000000-0000-0000-0000-000000000003', 'k0000000-0000-0000-0000-000000000002', 'instagram', 'clinicasonrie', 'u0000000-0000-0000-0000-000000000001'),
+  ('s0000000-0000-0000-0000-000000000004', 'k0000000-0000-0000-0000-000000000003', 'tiktok',    'modaraiz',      'u0000000-0000-0000-0000-000000000001');
+
+INSERT INTO scheduled_posts (id, social_account_id, content_type, caption, scheduled_at, status, created_by_id) VALUES
+  ('p0000000-0000-0000-0000-000000000001', 's0000000-0000-0000-0000-000000000001', 'reel',  'Lanzamiento café de origen Huila', '2026-10-24 08:00:00', 'scheduled', 'u0000000-0000-0000-0000-000000000002'),
+  ('p0000000-0000-0000-0000-000000000002', 's0000000-0000-0000-0000-000000000003', 'post',  'Tips de higiene oral para niños',  '2026-10-24 12:30:00', 'scheduled', 'u0000000-0000-0000-0000-000000000002'),
+  ('p0000000-0000-0000-0000-000000000003', 's0000000-0000-0000-0000-000000000004', 'video', 'Colección otoño en 15 segundos',   '2026-10-23 18:00:00', 'published', 'u0000000-0000-0000-0000-000000000003'),
+  ('p0000000-0000-0000-0000-000000000004', 's0000000-0000-0000-0000-000000000002', 'post',  'Promo 2x1 fin de semana',          '2026-10-23 10:00:00', 'published', 'u0000000-0000-0000-0000-000000000001');
+
+INSERT INTO post_metrics (scheduled_post_id, likes, comments, shares, reach, engagement_rate) VALUES
+  ('p0000000-0000-0000-0000-000000000003', 1204, 88, 143, 12900, 11.10),
+  ('p0000000-0000-0000-0000-000000000004', 312,  41, 27,  5300,  7.20);
